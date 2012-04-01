@@ -7,7 +7,7 @@ set shiftround
 set preserveindent
 
 set nocompatible
-set background=light
+set background=dark
 set number
 set ruler
 set smarttab
