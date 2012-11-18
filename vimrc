@@ -26,7 +26,7 @@ set laststatus=2
 let g:Powerline_symbols='fancy'
 
 :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR> " Space Silences hlsearch
-colo inkpot
+colo slate
 
 syntax on
 filetype plugin indent on
