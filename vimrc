@@ -1,5 +1,6 @@
-set hlsearch
-set tabstop=4 shiftwidth=4 softtabstop=4
+colo slate
+set hls
+set ts=4 sw=4 sts=4
 set incsearch
 set shiftround
 set preserveindent
@@ -7,11 +8,10 @@ set showcmd
 set showmode
 set hidden
 
-set expandtab
 set smartindent
 set smarttab
 set showmatch
-set vb t_vb=
+set vb t_vb= " Silence the error bells.
 set title
 set nocompatible
 set background=dark
@@ -26,7 +26,6 @@ set laststatus=2
 let g:Powerline_symbols='fancy'
 
 :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR> " Space Silences hlsearch
-colo slate
 
 syntax on
 filetype plugin indent on
@@ -43,9 +42,9 @@ if has("autocmd")
 endif
 
 call pathogen#infect() " plugin management
-autocmd! BufRead,BufNewFile *.ino setlocal ft=arduino
+autocmd! BufRead,BufNewFile *.ino setlocal ft=arduino expandtab
 autocmd! BufRead,BufNewFile *.json set ft=json
-autocmd! BufRead,BufNewFile *.py set ft=python
+autocmd! BufRead,BufNewFile *.py setlocal ft=python expandtab
 autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
