@@ -45,6 +45,7 @@ call pathogen#infect() " plugin management
 autocmd! BufRead,BufNewFile *.ino setlocal ft=arduino expandtab
 autocmd! BufRead,BufNewFile *.json set ft=json
 autocmd! BufRead,BufNewFile *.py setlocal ft=python expandtab
+autocmd! BufRead,BufNewFile *.pig setlocal ft=pig expandtab ts=2 sw=2 sts=2
 autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
