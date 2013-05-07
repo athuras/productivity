@@ -1,3 +1,6 @@
+" Buffer-reload of document on write
+autocmd! bufwritepost .vimrc source %
+
 colo slate
 set hls
 set ts=4 sw=4 sts=4
@@ -16,6 +19,40 @@ set title
 set nocompatible
 set background=dark
 set number
+
+" Tex settings
+hi Conceal guibg=black guifg=white
+let g:tex_conceal="adgm"
+set cole=0
+
+
+set mouse=a " on OSX press ALT + Click
+" Numpad
+if &term=="xterm" || &term=="xterm-color"
+     set t_Co=8
+     set t_Sb=^[4%dm
+     set t_Sf=^[3%dm
+     :imap <Esc>Oq 1
+     :imap <Esc>Or 2
+     :imap <Esc>Os 3
+     :imap <Esc>Ot 4
+     :imap <Esc>Ou 5
+     :imap <Esc>Ov 6
+     :imap <Esc>Ow 7
+     :imap <Esc>Ox 8
+     :imap <Esc>Oy 9
+     :imap <Esc>Op 0
+     :imap <Esc>On .
+     :imap <Esc>OQ /
+     :imap <Esc>OR *
+     :imap <Esc>Ol +
+     :imap <Esc>OS -
+endif
+
+
+" Multiple indentation of code blocks
+vnoremap < <gv
+vnoremap > >gv
 
 set ruler
 set updatecount=100
@@ -46,6 +83,8 @@ autocmd! BufRead,BufNewFile *.ino setlocal ft=arduino expandtab
 autocmd! BufRead,BufNewFile *.json set ft=json
 autocmd! BufRead,BufNewFile *.py setlocal ft=python expandtab
 autocmd! BufRead,BufNewFile *.pig setlocal ft=pig expandtab ts=2 sw=2 sts=2
+autocmd! BufRead,BufNewFile *.hs setlocal ft=haskell expandtab ts=4 sw=4 sts=4
+
 autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
