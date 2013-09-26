@@ -1,7 +1,7 @@
 export CLICOLOR=1
-export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+# export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 # dark scheme ^ | light scheme below
-# export LSCOLORS=ExFxCxDxBxegedabagacad
+export LSCOLORS=ExFxCxDxBxegedabagacad
 alias ll='ls -l'
 alias lls='ls -l | sort -nk5'
 alias l='ls -G'
@@ -17,4 +17,18 @@ alias p8='ping 8.8.8.8'
 alias mysql=/usr/local/mysql/bin/mysql
 alias mysqladmin=/usr/local/mysql/bin/mysqladmin
 
-alias datafart='curl --data-binary @- datafart.com'
+function mkcd() {
+	mkdir $1 && cd $1
+}
+
+function stash_rdisk() {
+	echo "Archiving /Volumes/RamDisk to /usr/local/archive_rdisk"
+	rsync -avz /Volumes/RamDisk/* /usr/local/RamDisk_archive
+}
+
+function mount_rdisk() {
+	echo "Mounting $1 MB RAM Disk at /Volumes/RamDisk"
+	diskutil erasevolume HFS+ RamDisk `hdiutil attach -nomount ram://$(expr $1 \* 2048)`
+	echo "Pulling from local stash: /usr/local/RamDisk_archive"
+	rsync -avz /usr/local/RamDisk_archive/* /Volumes/RamDisk
+}

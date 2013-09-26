@@ -10,6 +10,7 @@ set preserveindent
 set showcmd
 set showmode
 set hidden
+set bg=dark
 
 set smartindent
 set smarttab
@@ -17,13 +18,7 @@ set showmatch
 set vb t_vb= " Silence the error bells.
 set title
 set nocompatible
-set background=dark
 set number
-
-" Tex settings
-hi Conceal guibg=black guifg=white
-let g:tex_conceal="adgm"
-set cole=0
 
 
 set mouse=a " on OSX press ALT + Click
@@ -64,7 +59,6 @@ let g:Powerline_symbols='fancy'
 
 :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR> " Space Silences hlsearch
 
-syntax on
 filetype plugin indent on
 au BufWritePre * :%s/\s\+$//e " delete trailing spaces on exit
 
@@ -79,11 +73,18 @@ if has("autocmd")
 endif
 
 call pathogen#infect() " plugin management
+
+syntax on
+syntax enable
+set background=light
+colorscheme solarized
+
 autocmd! BufRead,BufNewFile *.ino setlocal ft=arduino expandtab
 autocmd! BufRead,BufNewFile *.json set ft=json
 autocmd! BufRead,BufNewFile *.py setlocal ft=python expandtab
 autocmd! BufRead,BufNewFile *.pig setlocal ft=pig expandtab ts=2 sw=2 sts=2
 autocmd! BufRead,BufNewFile *.hs setlocal ft=haskell expandtab ts=4 sw=4 sts=4
+au BufRead,BufNewFile *.go setlocal ft=go expandtab ts=4 sw=4 sts=4
 
 autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
