@@ -13,9 +13,12 @@ alias pi='ipython'
 alias ipnb='ipython notebook'
 alias py='python'
 alias p8='ping 8.8.8.8'
+alias julia='/Applications/Julia-0.2.0-rc4.app/Contents/Resources/julia/bin/julia'
 
 alias mysql=/usr/local/mysql/bin/mysql
 alias mysqladmin=/usr/local/mysql/bin/mysqladmin
+
+alias broken_pip=/usr/local/Cellar/python/2.7.5/bin/pip
 
 function mkcd() {
 	mkdir $1 && cd $1
