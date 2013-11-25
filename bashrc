@@ -1,3 +1,6 @@
+# My Personal .bashrc. A lot of this is OSX specific, and some of it is really hacky
+# i.e. sudo being invoked within a void function. But whatever...
+
 export CLICOLOR=1
 # export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 # dark scheme ^ | light scheme below
@@ -14,6 +17,7 @@ alias ipnb='ipython notebook'
 alias py='python'
 alias p8='ping 8.8.8.8'
 alias julia='/Applications/Julia-0.2.0-rc4.app/Contents/Resources/julia/bin/julia'
+alias ipinfo='curl ipinfo.io'
 
 alias mysql=/usr/local/mysql/bin/mysql
 alias mysqladmin=/usr/local/mysql/bin/mysqladmin
@@ -35,3 +39,16 @@ function mount_rdisk() {
 	echo "Pulling from local stash: /usr/local/RamDisk_archive"
 	rsync -avz /usr/local/RamDisk_archive/* /Volumes/RamDisk
 }
+
+function disable_apple_ftdi() {
+	echo "Disabling Mavericks FTDI Driver"
+	echo "sudo kextunload /System/Library/Extensions/IOUSBFamily.kext/Contents/PlugIns/AppleUSBFTDI.kext"
+	sudo kextunload /System/Library/Extensions/IOUSBFamily.kext/Contents/PlugIns/AppleUSBFTDI.kext
+}
+
+function enable_apple_ftdi() {
+	echo "Edabling Mavericks FTDI Driver"
+	echo "sudo kextload /System/Library/Extensions/IOUSBFamily.kext/Contents/PlugIns/AppleUSBFTDI.kext"
+	sudo kextload /System/Library/Extensions/IOUSBFamily.kext/Contents/PlugIns/AppleUSBFTDI.kext
+}
+	sudo kextload /System/Library/Extensions/IOUSBFamily.kext/Contents/PlugIns/AppleUSBFTDI.kext
