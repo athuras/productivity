@@ -1,5 +1,5 @@
 # My Personal .bashrc. A lot of this is OSX specific, and some of it is really hacky
-# i.e. sudo being invoked within a void function. But whatever...
+# i.e. being invoked within a void function. But whatever...
 
 export CLICOLOR=1
 # export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
@@ -42,13 +42,13 @@ function mount_rdisk() {
 
 function disable_apple_ftdi() {
 	echo "Disabling Mavericks FTDI Driver"
-	echo "sudo kextunload /System/Library/Extensions/IOUSBFamily.kext/Contents/PlugIns/AppleUSBFTDI.kext"
-	sudo kextunload /System/Library/Extensions/IOUSBFamily.kext/Contents/PlugIns/AppleUSBFTDI.kext
+	echo "kextunload /System/Library/Extensions/IOUSBFamily.kext/Contents/PlugIns/AppleUSBFTDI.kext"
+	kextunload /System/Library/Extensions/IOUSBFamily.kext/Contents/PlugIns/AppleUSBFTDI.kext
 }
 
 function enable_apple_ftdi() {
 	echo "Edabling Mavericks FTDI Driver"
-	echo "sudo kextload /System/Library/Extensions/IOUSBFamily.kext/Contents/PlugIns/AppleUSBFTDI.kext"
-	sudo kextload /System/Library/Extensions/IOUSBFamily.kext/Contents/PlugIns/AppleUSBFTDI.kext
+	echo "kextload /System/Library/Extensions/IOUSBFamily.kext/Contents/PlugIns/AppleUSBFTDI.kext"
+	kextload /System/Library/Extensions/IOUSBFamily.kext/Contents/PlugIns/AppleUSBFTDI.kext
 }
-	sudo kextload /System/Library/Extensions/IOUSBFamily.kext/Contents/PlugIns/AppleUSBFTDI.kext
+	kextload /System/Library/Extensions/IOUSBFamily.kext/Contents/PlugIns/AppleUSBFTDI.kext
