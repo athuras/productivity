@@ -51,4 +51,9 @@ function enable_apple_ftdi() {
 	echo "kextload /System/Library/Extensions/IOUSBFamily.kext/Contents/PlugIns/AppleUSBFTDI.kext"
 	kextload /System/Library/Extensions/IOUSBFamily.kext/Contents/PlugIns/AppleUSBFTDI.kext
 }
-	kextload /System/Library/Extensions/IOUSBFamily.kext/Contents/PlugIns/AppleUSBFTDI.kext
+
+function stash_wallet() {
+	echo "Copying local wallet to Dropbox"
+	cp /Users/ath/Library/Application\ Support/Bitcoin/wallet.dat \
+		/Users/ath/Dropbox/Bitcoin/Wallet\ Archives/wallet_$(date "+%Y%m%d").dat
+}
