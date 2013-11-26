@@ -1,0 +1,1 @@
+0 0 * * * cp /Users/ath/Library/Application\ Support/Bitcoin/wallet.dat /Users/ath/Dropbox/Bitcoin/Wallet\ Archives/wallet_$(date "+%Y%m%d").dat
