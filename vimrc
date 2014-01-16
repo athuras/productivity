@@ -1,7 +1,6 @@
 " Buffer-reload of document on write
 autocmd! bufwritepost .vimrc source %
 
-colo slate
 set hls
 set ts=4 sw=4 sts=4
 set incsearch
@@ -10,7 +9,6 @@ set preserveindent
 set showcmd
 set showmode
 set hidden
-set bg=dark
 
 set smartindent
 set smarttab
@@ -19,7 +17,12 @@ set vb t_vb= " Silence the error bells.
 set title
 set nocompatible
 set number
+colo slate " just in case
 
+syntax on
+syntax enable
+set background=dark
+colorscheme solarized
 
 set mouse=a " on OSX press ALT + Click
 " Numpad
@@ -43,7 +46,6 @@ if &term=="xterm" || &term=="xterm-color"
      :imap <Esc>Ol +
      :imap <Esc>OS -
 endif
-
 
 " Multiple indentation of code blocks
 vnoremap < <gv
@@ -73,15 +75,10 @@ if has("autocmd")
 endif
 
 call pathogen#infect() " plugin management
-
-syntax on
-syntax enable
-set background=light
-colorscheme solarized
-
 autocmd! BufRead,BufNewFile *.ino setlocal ft=arduino expandtab
 autocmd! BufRead,BufNewFile *.json set ft=json
 autocmd! BufRead,BufNewFile *.py setlocal ft=python expandtab
+autocmd! BufRead,BufNewFile *.erl setlocal ft=erlang expandtab
 autocmd! BufRead,BufNewFile *.pig setlocal ft=pig expandtab ts=2 sw=2 sts=2
 autocmd! BufRead,BufNewFile *.hs setlocal ft=haskell expandtab ts=4 sw=4 sts=4
 au BufRead,BufNewFile *.go setlocal ft=go expandtab ts=4 sw=4 sts=4
