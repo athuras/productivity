@@ -1,6 +1,9 @@
 # My Personal .bashrc. A lot of this is OSX specific, and some of it is really hacky
 # i.e. being invoked within a void function. But whatever...
 
+# For Posterity, to rename files
+# ls blah | awk '{print("mv" "$1" "$2")}' | sed 's/find/replace/2' | bash
+
 export CLICOLOR=1
 # export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 # dark scheme ^ | light scheme below
@@ -16,8 +19,10 @@ alias pi='ipython'
 alias ipnb='ipython notebook'
 alias py='python'
 alias p8='ping 8.8.8.8'
-alias julia='/Applications/Julia-0.2.0-rc4.app/Contents/Resources/julia/bin/julia'
+alias julia='/Applications/Julia-0.3.0-prerelease-a84c60eb1b.app/Contents/Resources/julia/bin/julia'
+alias ijnb='ipython notebook --profile julia'
 alias ipinfo='curl ipinfo.io'
+alias archey='bash /Users/ath/Documents/Dev/.archey.sh'
 
 alias mysql=/usr/local/mysql/bin/mysql
 alias mysqladmin=/usr/local/mysql/bin/mysqladmin
@@ -40,38 +45,15 @@ function mount_rdisk() {
 	rsync -avz /usr/local/RamDisk_archive/* /Volumes/RamDisk
 }
 
-function disable_apple_ftdi() {
-	echo "Disabling Mavericks FTDI Driver"
-	echo "kextunload /System/Library/Extensions/IOUSBFamily.kext/Contents/PlugIns/AppleUSBFTDI.kext"
-	kextunload /System/Library/Extensions/IOUSBFamily.kext/Contents/PlugIns/AppleUSBFTDI.kext
-}
-
-function enable_apple_ftdi() {
-	echo "Edabling Mavericks FTDI Driver"
-	echo "kextload /System/Library/Extensions/IOUSBFamily.kext/Contents/PlugIns/AppleUSBFTDI.kext"
-	kextload /System/Library/Extensions/IOUSBFamily.kext/Contents/PlugIns/AppleUSBFTDI.kext
-}
-
-function stash_wallet() {
-	echo "Copying local wallet to Dropbox"
-	cp ~/Library/Application\ Support/Bitcoin/wallet.dat \
-		~/Dropbox/Bitcoin/Wallet\ Archives/wallet_$(date "+%Y%m%d").dat
-}
-
-function gco() {
-	git checkout $1
-}
-
-
 # Utilities for quickly accessing frequently used directories in bash.
 
-# Usage: 
+# Usage:
 #   $ cd /path/to/project/src/
-#   $ mark code     # Will create a new shortcut. 
+#   $ mark code     # Will create a new shortcut.
 #                   # Becomes interactive if a shortcut already exists
 #                   # m is an alias for mark. You can also `m code`
 #
-#   $ code          # From now on, running this anywhere in the shell 
+#   $ code          # From now on, running this anywhere in the shell
 #                   # will put you in /path/to/project/src/code
 #
 #   $ unmark code   # Will remove the symlink and is interactive
