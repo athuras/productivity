@@ -12,6 +12,9 @@ call vundle#begin()
 Plugin 'gmarik/vundle' " Required
 
 " Various Plugins
+Bundle 'derekwyatt/vim-scala'
+Bundle 'solarnz/thrift.vim'
+Bundle 'spiroid/vim-ultisnip-scala'
 Plugin 'JuliaLang/julia-vim'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'SirVer/ultisnips'
@@ -31,6 +34,9 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-erlang/vim-erlang-compiler'
 Plugin 'vim-erlang/vim-erlang-omnicomplete'
+Bundle 'mustache/vim-mustache-handlebars'
+Bundle 'majutsushi/tagbar'
+Plugin 'craigemery/vim-autotag'
 
 call vundle#end()
 filetype plugin indent on
@@ -41,7 +47,7 @@ set hls incsearch
 set showcmd showmode
 set hidden
 set expandtab
-set ts=4 sw=4 sts=4
+set ts=2 sw=2 sts=2
 set title
 set number
 
@@ -52,6 +58,8 @@ set shell=bash
 nore ; :
 set laststatus=2
 let g:Powerline_symbols='fancy'
+
+let mapleader=","
 
 " Stop it from yelling at you
 set vb t_vb=
@@ -118,4 +126,14 @@ function! g:UltiSnips_Complete()
 endfunction
 
 au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-let g:UltiSnipsExpandTrigger="<CR>"
+let g:UltiSnipsExpandTrigger="<C-F>"
+
+" Tagbar options
+nnoremap <silent> <Leader>b :TagbarToggle<CR>
+
+" Keeping ctags sane: looks for tags file in current dir, then up levels until
+" it reaches $HOME
+" remember: C-W C-] will open in new split (stops from jumping all over proj
+
+set tags=./tags,tags;$HOME
+
