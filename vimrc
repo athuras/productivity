@@ -12,7 +12,9 @@ call vundle#begin()
 Plugin 'gmarik/vundle' " Required
 
 " Various Plugins
-Bundle 'derekwyatt/vim-scala'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'majutsushi/tagbar'
+Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'solarnz/thrift.vim'
 Bundle 'spiroid/vim-ultisnip-scala'
 Plugin 'JuliaLang/julia-vim'
@@ -22,11 +24,14 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'aerosol/vim-erlang-skeletons'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'craigemery/vim-autotag'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'fishcakez/vim-dialyzer'
 Plugin 'fishcakez/vim-rebar'
 Plugin 'honza/vim-snippets'
 Plugin 'jnwhiteh/vim-golang'
+Plugin 'kevints/vim-aurora-syntax'
+Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'tomtom/tlib_vim'
@@ -34,9 +39,6 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-erlang/vim-erlang-compiler'
 Plugin 'vim-erlang/vim-erlang-omnicomplete'
-Bundle 'mustache/vim-mustache-handlebars'
-Bundle 'majutsushi/tagbar'
-Plugin 'craigemery/vim-autotag'
 
 call vundle#end()
 filetype plugin indent on
@@ -65,6 +67,10 @@ let mapleader=","
 set vb t_vb=
 :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
+" Tab short-commands
+cmap :tn :tabn
+cmap :tp :tabp
+
 " Delete trailing spaces on exit
 au BufWritePre * :%s/\s\+$//e
 
@@ -81,6 +87,8 @@ endif
 syntax on
 set background=dark
 colorscheme solarized
+hi clear SignColumn " fix gitgutter signs
+
 
 " NERDTree
 autocmd vimenter * if !argc() | NERDTree | endif
@@ -137,3 +145,8 @@ nnoremap <silent> <Leader>b :TagbarToggle<CR>
 
 set tags=./tags,tags;$HOME
 
+" CtrlP settings see:
+" http://stackoverflow.com/questions/21888869/how-to-make-ctrlps-search-directory-change-according-to-nerdtrees-root
+let g:ctrlp_root_markers = ['ctrlp_STOP']
+let g:NERDTreeChDirMode = 2
+let g:ctrlp_working_path_mode = 'rw'
