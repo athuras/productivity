@@ -150,3 +150,5 @@ set tags=./tags,tags;$HOME
 let g:ctrlp_root_markers = ['ctrlp_STOP']
 let g:NERDTreeChDirMode = 2
 let g:ctrlp_working_path_mode = 'rw'
+
+set clipboard=unnamed
