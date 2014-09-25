@@ -18,7 +18,7 @@ Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'solarnz/thrift.vim'
 Bundle 'spiroid/vim-ultisnip-scala'
 Plugin 'JuliaLang/julia-vim'
-Plugin 'Lokaltog/vim-powerline'
+Plugin 'bling/vim-airline'
 Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'aerosol/vim-erlang-skeletons'
@@ -59,13 +59,20 @@ set updatecount=100
 set shell=bash
 nore ; :
 set laststatus=2
-let g:Powerline_symbols='fancy'
+set encoding=utf-8
+
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
 let mapleader=","
 
 " Stop it from yelling at you
 set vb t_vb=
 :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+
+" Tagbar / NERDTree toggles
+nmap <F6> :TagbarToggle<CR>
+nmap <F5> :NERDTreeToggle<CR>
 
 " Tab short-commands
 cmap :tn :tabn
