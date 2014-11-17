@@ -39,6 +39,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-erlang/vim-erlang-compiler'
 Plugin 'vim-erlang/vim-erlang-omnicomplete'
+Plugin 'rizzatti/dash.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -60,9 +61,7 @@ set shell=bash
 nore ; :
 set laststatus=2
 set encoding=utf-8
-
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
+set clipboard=unnamed
 
 let mapleader=","
 
@@ -158,4 +157,13 @@ let g:ctrlp_root_markers = ['ctrlp_STOP']
 let g:NERDTreeChDirMode = 2
 let g:ctrlp_working_path_mode = 'rw'
 
-set clipboard=unnamed
+" vim-airline
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
+" vim-scala
+let g:scala_first_party_namespaces='twitter'
+
+" vim-dash
+:nmap <silent> <leader>d <Plug>DashSearch
+:nmap <silent> <leader>D <Plug>DashGlobalSearch
