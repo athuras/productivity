@@ -1,4 +1,4 @@
-" My vimrc file for work, similar to the normal one.
+" My vimrc file, hopefully now a little cleaner
 " -@athuras
 "
 " Plugins #####################################################################
@@ -13,6 +13,7 @@ Plugin 'gmarik/vundle' " Required
 
 " Various Plugins
 Plugin 'JuliaLang/julia-vim'
+Plugin 'Rename'
 Plugin 'Rykka/riv.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/YouCompleteMe'
@@ -98,6 +99,9 @@ autocmd BufReadPost *
 if &t_Co > 2 || has("gui_running")
 	syntax on
 endif
+
+" Spelling in 'english' files.
+au BufRead,BufNewFile *.md setlocal spell spellang=en_us
 
 " Aesthetic
 syntax on
